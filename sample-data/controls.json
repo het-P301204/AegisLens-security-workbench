@@ -1,0 +1,98 @@
+[
+  {
+    "id": "AC-01",
+    "name": "Multi-Factor Authentication",
+    "category": "Access Control",
+    "description": "Administrative and remote access to production systems requires a second authentication factor.",
+    "status": "Partially Implemented",
+    "notes": "Enforced for the customer portal administration console but not for the identity provider administrator role."
+  },
+  {
+    "id": "AC-02",
+    "name": "Least Privilege Access",
+    "category": "Access Control",
+    "description": "Accounts and service identities are granted only the permissions required for their function, and access is reviewed periodically.",
+    "status": "Partially Implemented",
+    "notes": "Human accounts are reviewed quarterly. Service account privileges have not been reviewed in the current period."
+  },
+  {
+    "id": "AC-03",
+    "name": "Password Policy",
+    "category": "Access Control",
+    "description": "A documented password policy defines minimum length, complexity, reuse restrictions, and rotation requirements.",
+    "status": "Partially Implemented",
+    "notes": "A policy document exists but the enforced technical settings are weaker than the documented requirement."
+  },
+  {
+    "id": "AM-01",
+    "name": "Asset Inventory",
+    "category": "Asset Management",
+    "description": "An inventory of systems, services, and their owners is maintained and kept current.",
+    "status": "Partially Implemented",
+    "notes": "Production assets are recorded. Development and staging services are recorded inconsistently."
+  },
+  {
+    "id": "LM-01",
+    "name": "Centralized Log Collection",
+    "category": "Logging and Monitoring",
+    "description": "Security-relevant logs from production systems are forwarded to a central location and retained for a defined period.",
+    "status": "Not Implemented",
+    "notes": "Logs remain on individual hosts. No central collector is configured."
+  },
+  {
+    "id": "LM-02",
+    "name": "Log Review and Alerting",
+    "category": "Logging and Monitoring",
+    "description": "Collected logs are reviewed and alerting rules exist for defined security events.",
+    "status": "Not Implemented",
+    "notes": "Dependent on LM-01. No alerting rules are currently defined."
+  },
+  {
+    "id": "VM-01",
+    "name": "Dependency and Patch Management",
+    "category": "Vulnerability Management",
+    "description": "Third-party dependencies and operating system packages are tracked and updated on a defined schedule.",
+    "status": "Partially Implemented",
+    "notes": "Dependency inventory is generated during builds, but there is no documented remediation timeline."
+  },
+  {
+    "id": "VM-02",
+    "name": "Secure Configuration Baseline",
+    "category": "Vulnerability Management",
+    "description": "Systems and application components are configured against a documented secure baseline before release.",
+    "status": "Partially Implemented",
+    "notes": "A baseline exists for server images. Application-level settings such as upload handling are not covered."
+  },
+  {
+    "id": "IR-01",
+    "name": "Incident Response Plan",
+    "category": "Incident Response",
+    "description": "A documented incident response procedure defines roles, escalation paths, communication steps, and post-incident review.",
+    "status": "Not Implemented",
+    "notes": "Only an outline draft exists. Roles and escalation paths are undefined."
+  },
+  {
+    "id": "DP-01",
+    "name": "Data Backup and Restore",
+    "category": "Data Protection",
+    "description": "Critical data is backed up on a defined schedule and restore procedures are tested periodically.",
+    "status": "Partially Implemented",
+    "notes": "Backups run nightly. The last documented restore test did not cover the primary application database."
+  },
+  {
+    "id": "DP-02",
+    "name": "Data Classification and Handling",
+    "category": "Data Protection",
+    "description": "Data is classified by sensitivity and handling requirements are defined for each classification level.",
+    "status": "Not Assessed",
+    "notes": "A draft policy was supplied but has not been reviewed in this assessment period."
+  },
+  {
+    "id": "SA-01",
+    "name": "Security Awareness Training",
+    "category": "Security Awareness",
+    "description": "Staff complete security awareness training on joining and at least annually thereafter.",
+    "status": "Partially Implemented",
+    "notes": "Training is assigned to all staff. Completion tracking shows a significant number of outstanding records."
+  }
+]

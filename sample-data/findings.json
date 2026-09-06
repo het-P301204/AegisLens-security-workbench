@@ -1,0 +1,264 @@
+[
+  {
+    "id": "F-001",
+    "assessment_id": "A-001",
+    "title": "Missing multi-factor authentication on identity provider administrator accounts",
+    "description": "Three administrator accounts on the corporate identity provider are configured for password-only authentication. The exported configuration shows the conditional access rule that requires a second factor applies to standard staff accounts but excludes the administrator role group.",
+    "category": "Access Control",
+    "severity": "Critical",
+    "likelihood": 4,
+    "impact": 5,
+    "status": "Open",
+    "owner": "Identity and Access Team",
+    "affected_asset": "Corporate Identity Provider",
+    "security_impact": "An administrator account on the identity provider can grant, modify, or impersonate access across every connected internal system. Password-only authentication means a single reused or guessed credential is enough to reach that level of access.",
+    "recommended_action": "Extend the existing second-factor conditional access rule to the administrator role group, then re-export the configuration to confirm no role group is excluded. Require hardware or application-based factors rather than SMS for these accounts.",
+    "due_date": "2026-09-20",
+    "created_at": "2026-08-04",
+    "control_ids": [
+      "AC-01"
+    ]
+  },
+  {
+    "id": "F-002",
+    "assessment_id": "A-001",
+    "title": "Application service account holds excessive database privileges",
+    "description": "The service account used by the customer portal to reach the primary application database is a member of a role that includes schema modification and user management privileges. The documented data access needs of the application are limited to read and write operations on eight tables.",
+    "category": "Access Control",
+    "severity": "High",
+    "likelihood": 3,
+    "impact": 5,
+    "status": "In Review",
+    "owner": "Platform Engineering",
+    "affected_asset": "Primary Application Database",
+    "security_impact": "If the application is compromised through any injection or deserialization weakness, the attacker inherits privileges well beyond the data the application needs. Schema modification rights allow destruction of records and creation of persistent database-level access.",
+    "recommended_action": "Create a dedicated role limited to select, insert, and update on the eight tables the application uses, reassign the service account to that role, and remove it from the administrative role. Verify the application test suite passes against the reduced role before promoting the change.",
+    "due_date": "2026-09-30",
+    "created_at": "2026-08-05",
+    "control_ids": [
+      "AC-02"
+    ]
+  },
+  {
+    "id": "F-003",
+    "assessment_id": "A-001",
+    "title": "Enforced password settings are weaker than the documented policy",
+    "description": "The password policy document requires a minimum of 14 characters and blocks the reuse of the previous 10 passwords. The authentication settings in the identity provider enforce a minimum of 8 characters with no reuse restriction.",
+    "category": "Access Control",
+    "severity": "Medium",
+    "likelihood": 3,
+    "impact": 3,
+    "status": "Closed",
+    "owner": "Identity and Access Team",
+    "affected_asset": "Corporate Identity Provider",
+    "security_impact": "Short and reusable passwords are materially easier to guess in a credential-stuffing or password-spraying attempt, and the gap between the written policy and the enforced setting means the internal documentation overstates the protection in place.",
+    "recommended_action": "Raise the enforced minimum length to 14 characters and enable password history enforcement so the technical setting matches the documented policy. Re-export the settings after the change as evidence.",
+    "due_date": "2026-08-29",
+    "created_at": "2026-08-05",
+    "control_ids": [
+      "AC-03"
+    ]
+  },
+  {
+    "id": "F-004",
+    "assessment_id": "A-001",
+    "title": "No centralized log collection for production services",
+    "description": "Application and authentication logs for the customer portal and identity provider are written to local storage on each host with a 7-day rotation. No forwarding configuration to a central collector was found, and interview notes confirm no collector exists.",
+    "category": "Logging and Monitoring",
+    "severity": "High",
+    "likelihood": 4,
+    "impact": 4,
+    "status": "Open",
+    "owner": "Platform Engineering",
+    "affected_asset": "Customer Portal",
+    "security_impact": "Without central collection and longer retention, suspicious activity is unlikely to be detected, and after an incident the evidence needed to establish what happened may already have been rotated away. Logs stored only on the affected host can also be altered by whoever reaches that host.",
+    "recommended_action": "Deploy a central log collector, forward authentication and application logs from production hosts to it, and set retention to at least 90 days. Once collection is in place, define alerting rules for repeated authentication failures and administrative role changes.",
+    "due_date": "2026-10-15",
+    "created_at": "2026-08-07",
+    "control_ids": [
+      "LM-01",
+      "LM-02"
+    ]
+  },
+  {
+    "id": "F-005",
+    "assessment_id": "A-001",
+    "title": "Outdated third-party dependency with published vulnerabilities",
+    "description": "The dependency inventory generated by the build pipeline lists a web framework component that is four minor versions behind the maintained release. The scan output attached as evidence records two published advisories affecting the pinned version, one of which is reachable from request-handling code.",
+    "category": "Vulnerability Management",
+    "severity": "High",
+    "likelihood": 4,
+    "impact": 4,
+    "status": "Open",
+    "owner": "Application Engineering",
+    "affected_asset": "Customer Portal",
+    "security_impact": "A publicly documented weakness in an internet-facing component is available to any attacker who fingerprints the application version. The affected code path handles untrusted request data, so the exposure is not theoretical.",
+    "recommended_action": "Upgrade the component to the current maintained release, run the regression suite, and add a build step that fails when a dependency with a known high-severity advisory is present. Record a remediation timeline in the patch management procedure.",
+    "due_date": "2026-09-26",
+    "created_at": "2026-08-11",
+    "control_ids": [
+      "VM-01"
+    ]
+  },
+  {
+    "id": "F-006",
+    "assessment_id": "A-001",
+    "title": "File upload handler accepts unrestricted file types and sizes",
+    "description": "The upload handler configuration for the customer portal document feature sets no allow-list of permitted content types, no maximum file size, and stores uploads under a directory served directly by the web server. Test notes record that a file with an executable extension was accepted during a functional test.",
+    "category": "Vulnerability Management",
+    "severity": "Critical",
+    "likelihood": 4,
+    "impact": 5,
+    "status": "In Review",
+    "owner": "Application Engineering",
+    "affected_asset": "Customer Portal",
+    "security_impact": "Storing arbitrary uploaded files inside a directory the web server will serve creates a path to code execution on the host, and the absent size limit allows a single user to exhaust storage. The functional test confirms the file type was accepted; no attempt was made to execute it.",
+    "recommended_action": "Add a server-side allow-list of permitted content types, enforce a maximum upload size, generate stored filenames server-side, and move the upload directory outside the web-served path so files are returned through an authorised handler instead.",
+    "due_date": "2026-09-04",
+    "created_at": "2026-08-12",
+    "control_ids": [
+      "VM-02"
+    ]
+  },
+  {
+    "id": "F-007",
+    "assessment_id": "A-001",
+    "title": "Backup restore testing does not cover the primary application database",
+    "description": "The backup schedule confirms nightly snapshots of all production databases. The most recent restore test summary covers only a reporting database; the primary application database has no recorded restore test in the current period.",
+    "category": "Data Protection",
+    "severity": "Medium",
+    "likelihood": 2,
+    "impact": 4,
+    "status": "Accepted",
+    "owner": "Platform Engineering",
+    "affected_asset": "Primary Application Database",
+    "security_impact": "A backup that has never been restored is an assumption rather than a control. If the snapshot format, encryption key handling, or schema compatibility has drifted, that would only be discovered during an actual recovery, when time matters most.",
+    "recommended_action": "Perform a full restore of the primary application database into an isolated environment, record the elapsed time and any errors, and schedule the test quarterly. Risk was formally accepted for this period pending the next maintenance window.",
+    "due_date": "2026-11-28",
+    "created_at": "2026-08-14",
+    "control_ids": [
+      "DP-01"
+    ]
+  },
+  {
+    "id": "F-008",
+    "assessment_id": "A-001",
+    "title": "No documented incident response procedure",
+    "description": "The only incident response material supplied is a one-page outline draft listing section headings. It does not define responder roles, escalation contacts, severity criteria, communication steps, or post-incident review. Interview notes confirm no exercise has been run.",
+    "category": "Incident Response",
+    "severity": "High",
+    "likelihood": 3,
+    "impact": 4,
+    "status": "Open",
+    "owner": "Internal Security Team",
+    "affected_asset": "Organization-wide",
+    "security_impact": "Without defined roles and escalation paths, the response to a real incident depends on whoever happens to be available, which typically means slower containment, inconsistent decisions about disclosure, and gaps in the record needed afterwards.",
+    "recommended_action": "Complete the procedure to cover roles, severity criteria, escalation contacts, internal and external communication, and post-incident review. Validate it with one tabletop exercise and record the outcome as evidence.",
+    "due_date": "2026-10-31",
+    "created_at": "2026-08-18",
+    "control_ids": [
+      "IR-01"
+    ]
+  },
+  {
+    "id": "F-009",
+    "assessment_id": "A-001",
+    "title": "Staging web service was reachable without access restriction",
+    "description": "An exposure review screenshot showed the staging copy of the customer portal answering requests from outside the corporate network with no authentication in front of it. A firewall rule change record dated 2026-08-27 shows access was subsequently limited to the corporate address range.",
+    "category": "Asset Management",
+    "severity": "High",
+    "likelihood": 4,
+    "impact": 3,
+    "status": "Remediated",
+    "owner": "Application Engineering",
+    "affected_asset": "Staging Web Service",
+    "security_impact": "A publicly reachable pre-release service typically runs unfinished code with verbose errors and sometimes a copy of production data, which makes it an attractive and low-effort route into the environment.",
+    "recommended_action": "Remediation is recorded as complete. Confirm the restriction with a follow-up external check, and add staging and development services to the asset inventory so future exposures are caught by routine review.",
+    "due_date": "2026-08-31",
+    "created_at": "2026-08-20",
+    "control_ids": [
+      "AM-01",
+      "VM-02"
+    ]
+  },
+  {
+    "id": "F-010",
+    "assessment_id": "A-001",
+    "title": "Security awareness training completion is incomplete",
+    "description": "The training completion export shows 61 of 94 staff have completed the current annual awareness module. The remaining 33 records are past the assigned due date. The export has not yet been confirmed against the current staff list.",
+    "category": "Security Awareness",
+    "severity": "Low",
+    "likelihood": 2,
+    "impact": 2,
+    "status": "In Review",
+    "owner": "People Operations",
+    "affected_asset": "Organization-wide",
+    "security_impact": "Awareness training reduces the success rate of phishing and social engineering attempts. A third of staff outstanding weakens that effect, though it does not by itself create a technical weakness.",
+    "recommended_action": "Reconcile the export against the current staff list, follow up on outstanding records, and report completion monthly until the rate exceeds the internal target.",
+    "due_date": "2026-10-10",
+    "created_at": "2026-08-21",
+    "control_ids": [
+      "SA-01"
+    ]
+  },
+  {
+    "id": "F-011",
+    "assessment_id": "A-002",
+    "title": "Asset inventory is missing ownership records for non-production services",
+    "description": "The asset inventory export lists 41 services. Eleven development and staging entries have no named owner, and four have no environment classification.",
+    "category": "Asset Management",
+    "severity": "Medium",
+    "likelihood": 3,
+    "impact": 3,
+    "status": "Open",
+    "owner": "Platform Engineering",
+    "affected_asset": "Organization-wide",
+    "security_impact": "Unowned services do not get patched, reviewed, or decommissioned, because no one is accountable for them. They are a common source of forgotten exposures.",
+    "recommended_action": "Assign a named owner and environment classification to every inventory entry, and add an inventory completeness check to the quarterly review.",
+    "due_date": "2026-11-14",
+    "created_at": "2026-09-01",
+    "control_ids": [
+      "AM-01"
+    ]
+  },
+  {
+    "id": "F-012",
+    "assessment_id": "A-002",
+    "title": "Response security headers absent on the staging web service",
+    "description": "Responses from the staging web service omit a content security policy, frame options, and content type options headers. Production responses include all three.",
+    "category": "Vulnerability Management",
+    "severity": "Informational",
+    "likelihood": 1,
+    "impact": 2,
+    "status": "Open",
+    "owner": "Application Engineering",
+    "affected_asset": "Staging Web Service",
+    "security_impact": "The staging service now has restricted network access and holds no customer data, so the practical exposure is minimal. It is recorded so the configuration difference between staging and production is deliberate rather than accidental.",
+    "recommended_action": "Apply the production header configuration to the staging environment so both environments are tested under equivalent settings.",
+    "due_date": "2026-12-12",
+    "created_at": "2026-09-02",
+    "control_ids": [
+      "VM-02"
+    ]
+  },
+  {
+    "id": "F-013",
+    "assessment_id": "A-002",
+    "title": "Shared administrative account in use on the internal build server",
+    "description": "Interview notes record that four engineers use one shared administrative login on the internal build server. Individual accounts exist but are not used for administrative tasks.",
+    "category": "Access Control",
+    "severity": "High",
+    "likelihood": 3,
+    "impact": 4,
+    "status": "Open",
+    "owner": "Developer Experience",
+    "affected_asset": "Internal Build Server",
+    "security_impact": "A shared credential removes the ability to attribute a build or configuration change to a person, and it survives an individual leaving the team. On a build server, that also weakens confidence in the integrity of released artefacts.",
+    "recommended_action": "Grant administrative rights to individual accounts, disable the shared login, and confirm the build audit log records the individual action for each privileged change.",
+    "due_date": "2026-11-21",
+    "created_at": "2026-09-03",
+    "control_ids": [
+      "AC-02"
+    ]
+  }
+]

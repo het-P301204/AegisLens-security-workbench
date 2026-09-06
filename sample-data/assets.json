@@ -1,0 +1,47 @@
+[
+  {
+    "id": "AS-01",
+    "name": "Customer Portal",
+    "asset_type": "Web Application",
+    "environment": "Production",
+    "owner": "Application Engineering",
+    "criticality": "High",
+    "description": "Public customer-facing web application providing account management and document upload."
+  },
+  {
+    "id": "AS-02",
+    "name": "Primary Application Database",
+    "asset_type": "Database",
+    "environment": "Production",
+    "owner": "Platform Engineering",
+    "criticality": "Critical",
+    "description": "Relational database holding customer account records and application state."
+  },
+  {
+    "id": "AS-03",
+    "name": "Corporate Identity Provider",
+    "asset_type": "Identity Service",
+    "environment": "Production",
+    "owner": "Identity and Access Team",
+    "criticality": "Critical",
+    "description": "Single sign-on provider used for staff and administrative access to internal systems."
+  },
+  {
+    "id": "AS-04",
+    "name": "Internal Build Server",
+    "asset_type": "CI/CD Service",
+    "environment": "Internal",
+    "owner": "Developer Experience",
+    "criticality": "Medium",
+    "description": "Continuous integration server that builds and packages application releases."
+  },
+  {
+    "id": "AS-05",
+    "name": "Staging Web Service",
+    "asset_type": "Web Application",
+    "environment": "Development",
+    "owner": "Application Engineering",
+    "criticality": "Low",
+    "description": "Non-production copy of the customer portal used for pre-release verification."
+  }
+]

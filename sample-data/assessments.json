@@ -1,0 +1,20 @@
+[
+  {
+    "id": "A-001",
+    "name": "2026 Q3 Internal Security Assessment",
+    "period": "2026-07-01 to 2026-09-30",
+    "owner": "Internal Security Team",
+    "scope": "Customer-facing web application, primary application database, corporate identity provider, and the internal build server. Assessment covers configuration review, policy review, and interview-based control validation.",
+    "assumptions": "Findings are based on synthetic sample evidence supplied for this exercise. No live systems were tested, no exploitation was attempted, and no external attack surface scanning was performed.",
+    "is_active": true
+  },
+  {
+    "id": "A-002",
+    "name": "2026 Q4 Baseline Readiness Review",
+    "period": "2026-10-01 to 2026-12-31",
+    "owner": "Internal Security Team",
+    "scope": "Early baseline review of asset ownership records, the staging environment, and build server access management. Evidence collection is still in progress.",
+    "assumptions": "This review is in an early stage. Most controls are not yet assessed and supporting evidence has not been collected, so coverage figures are expected to be low.",
+    "is_active": false
+  }
+]

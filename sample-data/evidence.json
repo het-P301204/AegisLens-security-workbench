@@ -1,0 +1,222 @@
+[
+  {
+    "id": "E-001",
+    "name": "Identity provider conditional access export",
+    "evidence_type": "Configuration",
+    "description": "Configuration export listing conditional access rules and the role groups each rule applies to. Shows the administrator role group excluded from the second-factor rule.",
+    "source": "Identity provider admin console export, collected 2026-08-04",
+    "related_control_id": "AC-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-04",
+    "linked_finding_ids": ["F-001"]
+  },
+  {
+    "id": "E-002",
+    "name": "Administrator account listing screenshot",
+    "evidence_type": "Screenshot",
+    "description": "Screenshot of the administrator role membership page showing three accounts and their configured authentication methods.",
+    "source": "Identity provider admin console, captured 2026-08-04",
+    "related_control_id": "AC-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-04",
+    "linked_finding_ids": ["F-001"]
+  },
+  {
+    "id": "E-003",
+    "name": "Database role grant export",
+    "evidence_type": "Configuration",
+    "description": "Export of role definitions and grants for the application service account, including schema modification and user management privileges.",
+    "source": "Database administration export, collected 2026-08-05",
+    "related_control_id": "AC-02",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-05",
+    "linked_finding_ids": ["F-002"]
+  },
+  {
+    "id": "E-004",
+    "name": "Database access review interview notes",
+    "evidence_type": "Interview note",
+    "description": "Notes from a discussion with platform engineering covering how service account privileges are assigned and when they were last reviewed.",
+    "source": "Interview with Platform Engineering, 2026-08-06",
+    "related_control_id": "AC-02",
+    "verification_status": "Pending",
+    "upload_date": "2026-08-06",
+    "linked_finding_ids": ["F-002"]
+  },
+  {
+    "id": "E-005",
+    "name": "Password policy document v1.4",
+    "evidence_type": "Policy",
+    "description": "Approved internal password policy stating a 14 character minimum, complexity requirements, and reuse restrictions.",
+    "source": "Internal policy library, revision dated 2026-02-11",
+    "related_control_id": "AC-03",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-05",
+    "linked_finding_ids": ["F-003"]
+  },
+  {
+    "id": "E-006",
+    "name": "Authentication settings screenshot",
+    "evidence_type": "Screenshot",
+    "description": "Screenshot of the enforced password settings page showing an 8 character minimum and password history disabled.",
+    "source": "Identity provider admin console, captured 2026-08-05",
+    "related_control_id": "AC-03",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-05",
+    "linked_finding_ids": ["F-003"]
+  },
+  {
+    "id": "E-007",
+    "name": "Host log rotation configuration sample",
+    "evidence_type": "Configuration",
+    "description": "Log rotation configuration from two production hosts showing 7-day retention and no remote forwarding destination.",
+    "source": "Production host configuration sample, collected 2026-08-07",
+    "related_control_id": "LM-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-07",
+    "linked_finding_ids": ["F-004"]
+  },
+  {
+    "id": "E-008",
+    "name": "Application server log excerpt",
+    "evidence_type": "Log",
+    "description": "Redacted excerpt of application server log output demonstrating the format and fields available locally.",
+    "source": "Customer portal host, excerpt covering 2026-08-06",
+    "related_control_id": "LM-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-07",
+    "linked_finding_ids": ["F-004"]
+  },
+  {
+    "id": "E-009",
+    "name": "Monitoring and alerting coverage notes",
+    "evidence_type": "Interview note",
+    "description": "Notes confirming that no alerting rules exist for authentication failures or administrative role changes, and no central collector is deployed.",
+    "source": "Interview with Platform Engineering, 2026-08-07",
+    "related_control_id": "LM-02",
+    "verification_status": "Pending",
+    "upload_date": "2026-08-08",
+    "linked_finding_ids": ["F-004"]
+  },
+  {
+    "id": "E-010",
+    "name": "Dependency inventory report",
+    "evidence_type": "Report",
+    "description": "Generated inventory of direct and transitive dependencies with pinned versions for the customer portal build.",
+    "source": "Build pipeline artefact, build 2026-08-10",
+    "related_control_id": "VM-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-11",
+    "linked_finding_ids": ["F-005"]
+  },
+  {
+    "id": "E-011",
+    "name": "Dependency advisory scan output",
+    "evidence_type": "Report",
+    "description": "Scanner output listing two published advisories affecting the pinned web framework version, with severity and fixed-version information.",
+    "source": "Build pipeline artefact, build 2026-08-10",
+    "related_control_id": "VM-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-11",
+    "linked_finding_ids": ["F-005"]
+  },
+  {
+    "id": "E-012",
+    "name": "Upload handler configuration extract",
+    "evidence_type": "Configuration",
+    "description": "Application configuration extract for the document upload feature showing no content type allow-list, no size limit, and the storage path inside the web-served directory.",
+    "source": "Customer portal configuration, collected 2026-08-12",
+    "related_control_id": "VM-02",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-12",
+    "linked_finding_ids": ["F-006"]
+  },
+  {
+    "id": "E-013",
+    "name": "Upload validation functional test notes",
+    "evidence_type": "Document",
+    "description": "Functional test notes recording which file types were accepted by the upload feature. No attempt was made to execute any uploaded file.",
+    "source": "Application Engineering test record, 2026-08-12",
+    "related_control_id": "VM-02",
+    "verification_status": "Pending",
+    "upload_date": "2026-08-13",
+    "linked_finding_ids": ["F-006"]
+  },
+  {
+    "id": "E-014",
+    "name": "Backup schedule configuration",
+    "evidence_type": "Configuration",
+    "description": "Backup job definitions showing nightly snapshots of all production databases with 30-day retention.",
+    "source": "Backup service configuration export, collected 2026-08-14",
+    "related_control_id": "DP-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-14",
+    "linked_finding_ids": ["F-007"]
+  },
+  {
+    "id": "E-015",
+    "name": "Restore test summary Q2 2026",
+    "evidence_type": "Report",
+    "description": "Summary of the most recent restore exercise. Covers the reporting database only; the primary application database is not included.",
+    "source": "Platform Engineering restore record, 2026-06-19",
+    "related_control_id": "DP-01",
+    "verification_status": "Not Verified",
+    "upload_date": "2026-08-14",
+    "linked_finding_ids": ["F-007"]
+  },
+  {
+    "id": "E-016",
+    "name": "Incident response procedure outline draft",
+    "evidence_type": "Document",
+    "description": "One-page draft listing intended section headings for an incident response procedure. No roles, contacts, or escalation criteria are defined.",
+    "source": "Internal Security Team draft, undated",
+    "related_control_id": "IR-01",
+    "verification_status": "Not Verified",
+    "upload_date": "2026-08-18",
+    "linked_finding_ids": ["F-008"]
+  },
+  {
+    "id": "E-017",
+    "name": "Staging service exposure review screenshot",
+    "evidence_type": "Screenshot",
+    "description": "Screenshot of the staging service responding to a request originating outside the corporate network, captured before the firewall change.",
+    "source": "Exposure review, captured 2026-08-20",
+    "related_control_id": "AM-01",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-20",
+    "linked_finding_ids": ["F-009"]
+  },
+  {
+    "id": "E-018",
+    "name": "Firewall rule change record",
+    "evidence_type": "Log",
+    "description": "Change record showing inbound access to the staging service restricted to the corporate address range on 2026-08-27.",
+    "source": "Change management record CHG-2026-0812",
+    "related_control_id": "VM-02",
+    "verification_status": "Verified",
+    "upload_date": "2026-08-28",
+    "linked_finding_ids": ["F-009"]
+  },
+  {
+    "id": "E-019",
+    "name": "Awareness training completion export",
+    "evidence_type": "Report",
+    "description": "Export from the training platform showing 61 of 94 assigned staff records marked complete for the current annual module.",
+    "source": "Training platform export, 2026-08-21",
+    "related_control_id": "SA-01",
+    "verification_status": "Pending",
+    "upload_date": "2026-08-21",
+    "linked_finding_ids": ["F-010"]
+  },
+  {
+    "id": "E-020",
+    "name": "Data classification policy draft",
+    "evidence_type": "Policy",
+    "description": "Draft data classification policy supplied during collection. Not reviewed in this assessment period and not yet linked to a finding.",
+    "source": "Internal policy library, draft dated 2026-07-30",
+    "related_control_id": "DP-02",
+    "verification_status": "Not Verified",
+    "upload_date": "2026-08-22",
+    "linked_finding_ids": []
+  }
+]

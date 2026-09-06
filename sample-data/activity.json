@@ -1,0 +1,122 @@
+[
+  {
+    "timestamp": "2026-08-04T09:12:00",
+    "actor": "analyst.one",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-001",
+    "detail": "Recorded missing multi-factor authentication on identity provider administrator accounts."
+  },
+  {
+    "timestamp": "2026-08-04T09:31:00",
+    "actor": "analyst.one",
+    "action": "Linked evidence",
+    "entity_type": "finding",
+    "entity_id": "F-001",
+    "detail": "Linked E-001 and E-002 as supporting evidence."
+  },
+  {
+    "timestamp": "2026-08-05T11:05:00",
+    "actor": "analyst.two",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-002",
+    "detail": "Recorded excessive database privileges held by the application service account."
+  },
+  {
+    "timestamp": "2026-08-06T14:40:00",
+    "actor": "analyst.two",
+    "action": "Changed status",
+    "entity_type": "finding",
+    "entity_id": "F-002",
+    "detail": "Status changed from Open to In Review pending confirmation of the required grant set."
+  },
+  {
+    "timestamp": "2026-08-07T10:18:00",
+    "actor": "analyst.one",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-004",
+    "detail": "Recorded absence of centralized log collection for production services."
+  },
+  {
+    "timestamp": "2026-08-08T08:55:00",
+    "actor": "reviewer.lead",
+    "action": "Verified evidence",
+    "entity_type": "evidence",
+    "entity_id": "E-007",
+    "detail": "Host log rotation configuration sample confirmed against the source system."
+  },
+  {
+    "timestamp": "2026-08-11T13:22:00",
+    "actor": "analyst.three",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-005",
+    "detail": "Recorded outdated third-party dependency with published advisories."
+  },
+  {
+    "timestamp": "2026-08-12T16:47:00",
+    "actor": "analyst.three",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-006",
+    "detail": "Recorded unrestricted file upload configuration on the customer portal."
+  },
+  {
+    "timestamp": "2026-08-14T09:30:00",
+    "actor": "analyst.two",
+    "action": "Updated control",
+    "entity_type": "control",
+    "entity_id": "DP-01",
+    "detail": "Status set to Partially Implemented after reviewing the restore test summary."
+  },
+  {
+    "timestamp": "2026-08-18T15:10:00",
+    "actor": "reviewer.lead",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-008",
+    "detail": "Recorded absence of a documented incident response procedure."
+  },
+  {
+    "timestamp": "2026-08-20T11:02:00",
+    "actor": "analyst.one",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-009",
+    "detail": "Recorded that the staging web service was reachable without access restriction."
+  },
+  {
+    "timestamp": "2026-08-28T09:44:00",
+    "actor": "analyst.one",
+    "action": "Changed status",
+    "entity_type": "finding",
+    "entity_id": "F-009",
+    "detail": "Status changed to Remediated after the firewall rule change record was supplied."
+  },
+  {
+    "timestamp": "2026-08-29T10:15:00",
+    "actor": "reviewer.lead",
+    "action": "Changed status",
+    "entity_type": "finding",
+    "entity_id": "F-003",
+    "detail": "Status changed to Closed after enforced password settings were raised to match the policy."
+  },
+  {
+    "timestamp": "2026-09-01T08:20:00",
+    "actor": "analyst.two",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-011",
+    "detail": "Opened the Q4 baseline review with an asset inventory ownership gap."
+  },
+  {
+    "timestamp": "2026-09-03T14:05:00",
+    "actor": "analyst.three",
+    "action": "Created finding",
+    "entity_type": "finding",
+    "entity_id": "F-013",
+    "detail": "Recorded shared administrative account use on the internal build server."
+  }
+]
