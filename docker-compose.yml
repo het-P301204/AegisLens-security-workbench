@@ -1,0 +1,24 @@
+# AegisLens runs as a single container. The SQLite file lives on a named volume
+# so findings you record survive a rebuild.
+services:
+  aegislens:
+    build: .
+    image: aegislens:1.0.0
+    container_name: aegislens
+    ports:
+      - "8000:8000"
+    environment:
+      AEGISLENS_DATABASE_URL: sqlite:////data/aegislens.db
+      AEGISLENS_SEED_ON_STARTUP: "true"
+    volumes:
+      - aegislens-data:/data
+    restart: unless-stopped
+    # The application needs no write access outside its data volume.
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  aegislens-data:
