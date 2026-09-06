@@ -1,0 +1,20 @@
+# Normalise line endings so the repository content is identical on every platform.
+* text=auto eol=lf
+
+# Windows-only tooling keeps CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary assets must never be converted.
+*.png binary
+*.jpg binary
+*.ico binary
+*.db binary
+
+# Collapse generated files in pull request diffs.
+package-lock.json linguist-generated=true -diff
+
+# Report the repository as the languages people actually write here.
+sample-data/*.json linguist-data=true
+screenshots/* linguist-documentation=true
