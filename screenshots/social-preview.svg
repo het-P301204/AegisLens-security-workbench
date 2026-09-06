@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640" role="img" aria-label="AegisLens - Security Evidence and Risk Intelligence Workbench">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0c10"/>
+      <stop offset="55%" stop-color="#11151c"/>
+      <stop offset="100%" stop-color="#161c26"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f8ff0" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#4f8ff0" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- faint grid, keeps the flat background from looking empty -->
+  <g stroke="#1c222c" stroke-width="1" opacity="0.55">
+    <path d="M0 160H1280M0 320H1280M0 480H1280"/>
+    <path d="M320 0V640M640 0V640M960 0V640"/>
+  </g>
+
+  <!-- shield mark -->
+  <g transform="translate(96, 128) scale(1.5)">
+    <path d="M40 2 74 15.5v27.8C74 64 60 79.2 40 86 20 79.2 6 64 6 43.3V15.5L40 2Z"
+          fill="#141922" stroke="#4f8ff0" stroke-width="2.6" stroke-linejoin="round"/>
+    <circle cx="40" cy="39" r="13" fill="none" stroke="#7fb2f5" stroke-width="2.4"/>
+    <path d="m49.6 48.6 9.4 9.4" stroke="#7fb2f5" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="264" y="196" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="82"
+        font-weight="600" letter-spacing="-1.6" fill="#e7eaf0">AegisLens</text>
+  <text x="266" y="240" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="25"
+        fill="#8d95a6">Security Evidence &amp; Risk Intelligence Workbench</text>
+
+  <rect x="96" y="292" width="640" height="2" fill="url(#rule)"/>
+
+  <!-- value line -->
+  <text x="96" y="348" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#b9c0cd">
+    Organise security evidence, score risk transparently, and generate
+  </text>
+  <text x="96" y="382" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="23" fill="#b9c0cd">
+    assessment reports that separate fact from judgement.
+  </text>
+
+  <!-- risk formula -->
+  <rect x="96" y="424" width="356" height="52" rx="9" fill="#161b23" stroke="#252c39"/>
+  <text x="120" y="457" font-family="Consolas, Menlo, monospace" font-size="21" fill="#7fb2f5">
+    risk = likelihood × impact
+  </text>
+
+  <!-- severity legend -->
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="16" font-weight="600" letter-spacing="1">
+    <rect x="476" y="424" width="118" height="52" rx="9" fill="#f0616d" fill-opacity="0.13" stroke="#f0616d" stroke-opacity="0.45"/>
+    <text x="497" y="457" fill="#f0616d">CRITICAL</text>
+
+    <rect x="606" y="424" width="82" height="52" rx="9" fill="#f0913f" fill-opacity="0.13" stroke="#f0913f" stroke-opacity="0.45"/>
+    <text x="628" y="457" fill="#f0913f">HIGH</text>
+
+    <rect x="700" y="424" width="112" height="52" rx="9" fill="#dcb544" fill-opacity="0.13" stroke="#dcb544" stroke-opacity="0.45"/>
+    <text x="722" y="457" fill="#dcb544">MEDIUM</text>
+
+    <rect x="824" y="424" width="74" height="52" rx="9" fill="#4fa3d1" fill-opacity="0.13" stroke="#4fa3d1" stroke-opacity="0.45"/>
+    <text x="847" y="457" fill="#4fa3d1">LOW</text>
+  </g>
+
+  <!-- stack strip -->
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="19" fill="#767e8d">
+    <text x="96" y="546">FastAPI</text>
+    <text x="204" y="546">·</text>
+    <text x="228" y="546">SQLAlchemy</text>
+    <text x="372" y="546">·</text>
+    <text x="396" y="546">React</text>
+    <text x="474" y="546">·</text>
+    <text x="498" y="546">TypeScript</text>
+    <text x="628" y="546">·</text>
+    <text x="652" y="546">Tailwind</text>
+    <text x="762" y="546">·</text>
+    <text x="786" y="546">Docker</text>
+  </g>
+
+  <!-- honest framing, on its own line so it cannot collide with the stack strip -->
+  <text x="96" y="592" font-family="Segoe UI, Helvetica, Arial, sans-serif"
+        font-size="17" fill="#5b6371">
+    Educational · defensive · runs entirely on synthetic sample data
+  </text>
+</svg>

@@ -6,6 +6,7 @@ sample dataset that ships with the project.
 | File | Shows |
 | ---- | ----- |
 | `banner.svg` | README banner (vector, edit directly) |
+| `social-preview.svg` / `.png` | GitHub social preview card, 1280×640 |
 | `01-overview.png` | Dashboard: metrics, risk distribution, evidence gaps, activity |
 | `02-findings.png` | Findings table with search, filters, and risk scores |
 | `03-finding-detail.png` | One finding, including the Finding → Evidence → Control view |
@@ -50,6 +51,15 @@ full size screenshot*).
 | `10-print-view.png` | `/api/reports/print` | 1000×900, viewport only |
 
 Keep the file names as they are — the README links to them directly.
+
+## Social preview
+
+`social-preview.png` is the image GitHub shows when the repository is shared. It is
+rendered from `social-preview.svg` at exactly 1280×640. Edit the SVG, then re-render
+it by opening the SVG at that viewport size and exporting a PNG.
+
+Upload it under **Settings → General → Social preview** on the repository; GitHub
+does not expose this setting through its API.
 
 ## Conventions
 
